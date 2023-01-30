@@ -12,11 +12,46 @@ public class Driver {
 			tree.addNode(new Node(null,null,new Data(val)));
 		}
 		
-		System.out.println("Tree nodes: ");
+		tree.settTraversal(TreeTraversal.POST_ORDER);
+		
+		System.out.println("Tree nodes: " + TreeTraversal.POST_ORDER );
 		LinkedList<Node> treeNodeList = tree.getTreeNodeList();
 		for(Node node: treeNodeList ) {
 			System.out.printf("%d,", node.getData().getValue());
 		}
+
+		tree.settTraversal(TreeTraversal.IN_ORDER);
+		
+		System.out.println("\n\nTree nodes: " + TreeTraversal.IN_ORDER );
+		treeNodeList.clear();
+		
+		treeNodeList = tree.getTreeNodeList();
+		for(Node node: treeNodeList ) {
+			System.out.printf("%d,", node.getData().getValue());
+		}
+		
+		tree.settTraversal(TreeTraversal.PRE_ORDER);
+		
+		System.out.println("\n\nTree nodes: " + TreeTraversal.PRE_ORDER );
+		treeNodeList.clear();
+		treeNodeList = tree.getTreeNodeList();
+		for(Node node: treeNodeList ) {
+			System.out.printf("%d,", node.getData().getValue());
+		}
+		
+		System.out.println("\n\nUnsorted array: ");
+		for(int val: arr) {
+			System.out.printf("%d,",val);
+		}
+		
+		SelectionSort selectionSort = new SelectionSort();
+		selectionSort.sort(arr);
+		
+		System.out.println("\n\nSorted by selection sort: ");
+		for(int val: arr) {
+			System.out.printf("%d,",val);
+		}
+		
 	}
 
 	public static void main1(String[] args) {

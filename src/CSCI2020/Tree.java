@@ -6,7 +6,7 @@ public class Tree {
 	private Node rootNode;
 	private int nodeCount = 0;
 	private LinkedList<Node> treeNodeList = new LinkedList<Node>();
-	
+	private TreeTraversal tTraversal = TreeTraversal.IN_ORDER;
 	public Tree() {
 		
 	}
@@ -16,6 +16,14 @@ public class Tree {
 		this.rootNode = rootNode;
 		if(rootNode != null)
 			this.nodeCount++;
+	}
+
+	public TreeTraversal gettTraversal() {
+		return tTraversal;
+	}
+
+	public void settTraversal(TreeTraversal tTraversal) {
+		this.tTraversal = tTraversal;
 	}
 
 	public Node getRootNode() {
@@ -70,10 +78,28 @@ public class Tree {
 	
 	public Node traverse(Node node) {
 		if(node != null) {
-			//In-Order Traversal
-			traverse(node.getLnode());
-			treeNodeList.add(node);
-			traverse(node.getRnode());
+			
+			switch(this.tTraversal) {
+			case PRE_ORDER: 
+				//Pre-Order Traversal
+				treeNodeList.add(node);
+				traverse(node.getLnode());
+				traverse(node.getRnode());
+				break;
+			case IN_ORDER:
+				//In-Order Traversal
+				traverse(node.getLnode());
+				treeNodeList.add(node);
+				traverse(node.getRnode());
+				break;
+			case POST_ORDER:
+				//Post-Order Traversal
+				traverse(node.getLnode());
+				traverse(node.getRnode());
+				treeNodeList.add(node);
+				break;
+
+			}
 		}
 		
 		return node;

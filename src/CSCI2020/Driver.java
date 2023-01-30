@@ -12,8 +12,18 @@ public class Driver {
 			tree.addNode(new Node(null,null,new Data(val)));
 		}
 		
-		System.out.println("Tree nodes: ");
+		tree.settTraversal(TreeTraversal.POST_ORDER);
+		
+		System.out.println("Tree nodes: " + TreeTraversal.POST_ORDER );
 		LinkedList<Node> treeNodeList = tree.getTreeNodeList();
+		for(Node node: treeNodeList ) {
+			System.out.printf("%d,", node.getData().getValue());
+		}
+
+		tree.settTraversal(TreeTraversal.IN_ORDER);
+		
+		System.out.println("Tree nodes: " + TreeTraversal.IN_ORDER );
+		treeNodeList = tree.getTreeNodeList();
 		for(Node node: treeNodeList ) {
 			System.out.printf("%d,", node.getData().getValue());
 		}
